@@ -1,0 +1,1008 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Krishna Consultancy - Financial Services</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #0d6efd;
+            --secondary-color: #6c757d;
+            --accent-color: #ffc107;
+            --dark-color: #212529;
+            --light-color: #f8f9fa;
+        }
+        
+        body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        color: #333;
+        background-color: #f9f9f9;
+    }
+    
+    .navbar {
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        background-color: white;
+        z-index: 1030;
+    }
+    
+    .navbar-brand {
+        font-weight: 700;
+        color: var(--primary-color);
+    }
+    
+    /* Carousel styling */
+    .carousel-item {
+        height: 500px;
+        background-size: cover;
+        background-position: center;
+        position: relative;
+    }
+    
+    .carousel-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+        display: flex;
+        align-items: center;
+    }
+    
+    .carousel-caption {
+        position: relative;
+        right: auto;
+        bottom: auto;
+        left: auto;
+        max-width: 600px;
+        padding: 0;
+        text-align: left;
+    }
+    
+    .carousel-indicators {
+        bottom: 30px;
+    }
+    
+    .carousel-control-prev, .carousel-control-next {
+        width: 5%;
+    }
+    
+    /* Reduce section spacing */
+    section {
+        padding: 3rem 0;
+    }
+    
+    .service-card {
+        border-radius: 10px;
+        overflow: hidden;
+        transition: transform 0.3s, box-shadow 0.3s;
+        height: 100%;
+        border: none;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    }
+    
+    .service-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    }
+    
+    .service-icon {
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+        color: var(--primary-color);
+    }
+    
+    .feature-item {
+        padding: 1.5rem;
+        border-radius: 10px;
+        background-color: white;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        height: 100%;
+        transition: transform 0.3s;
+    }
+    
+    .feature-item:hover {
+        transform: translateY(-5px);
+    }
+    
+    .feature-icon {
+        width: 60px;
+        height: 60px;
+        background-color: rgba(13, 110, 253, 0.1);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 1rem;
+        color: var(--primary-color);
+        font-size: 1.5rem;
+    }
+    
+    .cta-section {
+        background: linear-gradient(135deg, #ffc107, #ff9800);
+        color: white;
+        padding: 3rem 0;
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .cta-section::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23ffffff' fill-opacity='0.1' fill-rule='evenodd'/%3E%3C/svg%3E");
+        opacity: 0.3;
+    }
+    
+    .contact-info {
+        background-color: white;
+        border-radius: 10px;
+        padding: 2rem;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    }
+    
+    .contact-icon {
+        width: 50px;
+        height: 50px;
+        background-color: rgba(13, 110, 253, 0.1);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-right: 1rem;
+        color: var(--primary-color);
+        font-size: 1.2rem;
+    }
+    
+    .footer {
+        background-color: var(--dark-color);
+        color: white;
+        padding: 2.5rem 0 1rem;
+    }
+    
+    .btn-primary {
+        padding: 0.75rem 1.5rem;
+        font-weight: 600;
+        border-radius: 5px;
+    }
+    
+    .btn-outline-light {
+        padding: 0.75rem 1.5rem;
+        font-weight: 600;
+        border-radius: 5px;
+    }
+    
+    .section-title {
+        position: relative;
+        margin-bottom: 2rem;
+        font-weight: 700;
+    }
+    
+    .section-title::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        bottom: -10px;
+        width: 50px;
+        height: 3px;
+        background-color: var(--primary-color);
+    }
+    
+    .section-title.text-center::after {
+        left: 50%;
+        transform: translateX(-50%);
+    }
+    
+    .testimonial-card {
+        background-color: white;
+        border-radius: 10px;
+        padding: 2rem;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        margin-bottom: 1.5rem;
+    }
+    
+    .testimonial-avatar {
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        overflow: hidden;
+        margin-right: 1rem;
+        background-color: #e9ecef;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--primary-color);
+        font-size: 1.5rem;
+    }
+    
+    .loan-process-step {
+        position: relative;
+        padding-left: 70px;
+        margin-bottom: 2rem;
+    }
+    
+    .step-number {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 50px;
+        height: 50px;
+        background-color: var(--primary-color);
+        color: white;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: bold;
+        font-size: 1.2rem;
+    }
+    
+    .gujarati-text {
+        font-family: 'Noto Sans Gujarati', Arial, sans-serif;
+    }
+    
+    .card-highlight {
+        border-top: 4px solid var(--primary-color);
+    }
+    
+    .badge-custom {
+        background-color: rgba(13, 110, 253, 0.1);
+        color: var(--primary-color);
+        font-weight: 600;
+        padding: 0.5rem 1rem;
+        border-radius: 50px;
+    }
+    
+    .nav-link {
+        font-weight: 500;
+        padding: 0.5rem 1rem;
+        transition: color 0.3s;
+    }
+    
+    .nav-link:hover {
+        color: var(--primary-color);
+    }
+    
+    .highlight-text {
+        color: var(--primary-color);
+        font-weight: 700;
+    }
+    
+    .loan-type-tabs .nav-link {
+        border: none;
+        border-radius: 0;
+        padding: 1rem 1.5rem;
+        font-weight: 600;
+        color: var(--secondary-color);
+        position: relative;
+    }
+    
+    .loan-type-tabs .nav-link.active {
+        color: var(--primary-color);
+        background-color: transparent;
+    }
+    
+    .loan-type-tabs .nav-link.active::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 3px;
+        background-color: var(--primary-color);
+    }
+    
+    .loan-type-content {
+        padding: 2rem;
+        background-color: white;
+        border-radius: 0 0 10px 10px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    }
+    
+    .whatsapp-btn {
+        background-color: #25D366;
+        border-color: #25D366;
+    }
+    
+    .whatsapp-btn:hover {
+        background-color: #128C7E;
+        border-color: #128C7E;
+    }
+    
+    .phone-link {
+        color: inherit;
+        text-decoration: none;
+    }
+    
+    .phone-link:hover {
+        color: var(--primary-color);
+    }
+    
+    /* Enhanced UI elements */
+    .container {
+        max-width: 1200px;
+    }
+    
+    .card {
+        border: none;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        border-radius: 10px;
+        overflow: hidden;
+    }
+    
+    .btn {
+        border-radius: 50px;
+        padding: 0.75rem 1.75rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        transition: all 0.3s;
+    }
+    
+    .btn:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    }
+    
+    .form-control, .form-select {
+        padding: 0.75rem 1.25rem;
+        border-radius: 8px;
+        border: 1px solid #e0e0e0;
+    }
+    
+    .form-control:focus, .form-select:focus {
+        box-shadow: 0 0 0 3px rgba(13, 110, 253, 0.1);
+        border-color: var(--primary-color);
+    }
+    
+    /* Carousel background images */
+    .carousel-bg-1 {
+        background: linear-gradient(135deg, #0143a3, #0d6efd);
+    }
+    
+    .carousel-bg-2 {
+        background: linear-gradient(135deg, #1a237e, #283593);
+    }
+    
+    .carousel-bg-3 {
+        background: linear-gradient(135deg, #004d40, #00796b);
+    }
+    
+    /* Floating elements */
+    .float-element {
+        animation: float 3s ease-in-out infinite;
+    }
+    
+    @keyframes float {
+        0% { transform: translateY(0px); }
+        50% { transform: translateY(-10px); }
+        100% { transform: translateY(0px); }
+    }
+    
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+        .carousel-item {
+            height: 400px;
+        }
+        
+        .carousel-caption {
+            text-align: center;
+            margin: 0 auto;
+        }
+        
+        .section-title {
+            margin-bottom: 1.5rem;
+        }
+        
+        section {
+            padding: 2rem 0;
+        }
+    }
+</style>
+<!-- Hero Carousel Section -->
+<section id="home" class="p-0">
+    <div id="heroCarousel" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-indicators">
+            <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+        </div>
+        <div class="carousel-inner">
+            <div class="carousel-item active carousel-bg-1">
+                <div class="carousel-overlay">
+                    <div class="container">
+                        <div class="carousel-caption">
+                            <h1 class="display-4 fw-bold mb-3">Fast & Reliable Financial Solutions</h1>
+                            <p class="lead mb-4">Get instant loans within 24 hours with minimal documentation and attractive interest rates.</p>
+                            <div class="d-flex gap-3 flex-wrap">
+                                <a href="https://wa.me/916351094446?text=Hello,%20I'm%20interested%20in%20your%20loan%20services.%20Please%20provide%20more%20information." class="btn btn-light" target="_blank">
+                                    <i class="fab fa-whatsapp me-2"></i>Contact Us
+                                </a>
+                                <a href="#services" class="btn btn-outline-light">Our Services</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-item carousel-bg-2">
+                <div class="carousel-overlay">
+                    <div class="container">
+                        <div class="carousel-caption">
+                            <h1 class="display-4 fw-bold mb-3">Personal & Business Loans</h1>
+                            <p class="lead mb-4">Customized loan solutions for your personal and business financial needs.</p>
+                            <div class="d-flex gap-3 flex-wrap">
+                                <a href="https://wa.me/916351094446?text=Hello,%20I'm%20interested%20in%20Personal/Business%20Loan.%20Please%20provide%20more%20information." class="btn btn-light" target="_blank">
+                                    <i class="fab fa-whatsapp me-2"></i>Apply Now
+                                </a>
+                                <a href="#services" class="btn btn-outline-light">Learn More</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-item carousel-bg-3">
+                <div class="carousel-overlay">
+                    <div class="container">
+                        <div class="carousel-caption">
+                            <h1 class="display-4 fw-bold mb-3">Home & Mortgage Loans</h1>
+                            <p class="lead mb-4">Make your dream home a reality with our affordable home loan options.</p>
+                            <div class="d-flex gap-3 flex-wrap">
+                                <a href="https://wa.me/916351094446?text=Hello,%20I'm%20interested%20in%20Home/Mortgage%20Loan.%20Please%20provide%20more%20information." class="btn btn-light" target="_blank">
+                                    <i class="fab fa-whatsapp me-2"></i>Get Started
+                                </a>
+                                <a href="#services" class="btn btn-outline-light">View Options</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+</section>
+
+<!-- Services Section -->
+<section id="services">
+    <div class="container">
+        <h2 class="section-title text-center">Our Loan Services</h2>
+        <div class="row g-4">
+            <div class="col-md-6 col-lg-3">
+                <div class="card service-card h-100">
+                    <div class="card-body text-center p-4">
+                        <div class="service-icon">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <h4 class="card-title">Personal Loan</h4>
+                        <p class="card-text">Get quick personal loans for your immediate financial needs with flexible repayment options.</p>
+                        <div class="mt-3">
+                            <span class="badge badge-custom">Instant Approval</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3">
+                <div class="card service-card h-100">
+                    <div class="card-body text-center p-4">
+                        <div class="service-icon">
+                            <i class="fas fa-briefcase"></i>
+                        </div>
+                        <h4 class="card-title">Business Loan</h4>
+                        <p class="card-text">Expand your business with our customized business loan solutions with competitive interest rates.</p>
+                        <div class="mt-3">
+                            <span class="badge badge-custom">Low Documentation</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3">
+                <div class="card service-card h-100">
+                    <div class="card-body text-center p-4">
+                        <div class="service-icon">
+                            <i class="fas fa-home"></i>
+                        </div>
+                        <h4 class="card-title">Home Loan</h4>
+                        <p class="card-text">Make your dream home a reality with our affordable home loan options and expert guidance.</p>
+                        <div class="mt-3">
+                            <span class="badge badge-custom">Attractive Rates</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3">
+                <div class="card service-card h-100">
+                    <div class="card-body text-center p-4">
+                        <div class="service-icon">
+                            <i class="fas fa-landmark"></i>
+                        </div>
+                        <h4 class="card-title">Mortgage Loan</h4>
+                        <p class="card-text">Leverage your property assets with our mortgage loan services for your financial needs.</p>
+                        <div class="mt-3">
+                            <span class="badge badge-custom">Quick Process</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="mt-4">
+            <div class="card card-highlight">
+                <div class="card-body p-4">
+                    <h3 class="mb-3">Special Loan Services</h3>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="d-flex align-items-center mb-3">
+                                <i class="fas fa-check-circle text-primary me-2"></i>
+                                <p class="mb-0">Loan on Bajaj IDFC, HDB Card Limit</p>
+                            </div>
+                            <div class="d-flex align-items-center mb-3">
+                                <i class="fas fa-check-circle text-primary me-2"></i>
+                                <p class="mb-0">Loan on Old Bike, Car</p>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="d-flex align-items-center mb-3">
+                                <i class="fas fa-check-circle text-primary me-2"></i>
+                                <p class="mb-0">Attractive interest rates</p>
+                            </div>
+                            <div class="d-flex align-items-center mb-3">
+                                <i class="fas fa-check-circle text-primary me-2"></i>
+                                <p class="mb-0">Low documentation requirements</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Features Section -->
+<section class="bg-light" id="features">
+    <div class="container">
+        <h2 class="section-title text-center">Why Choose Krishna Consultancy</h2>
+        <div class="row g-4">
+            <div class="col-md-4">
+                <div class="feature-item">
+                    <div class="feature-icon">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <h4>Fast Approval</h4>
+                    <p>Get your loan approved within 24 hours with our streamlined process and dedicated team.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="feature-item">
+                    <div class="feature-icon">
+                        <i class="fas fa-file-alt"></i>
+                    </div>
+                    <h4>Minimal Documentation</h4>
+                    <p>We require only essential documents to process your loan application quickly.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="feature-item">
+                    <div class="feature-icon">
+                        <i class="fas fa-percentage"></i>
+                    </div>
+                    <h4>Competitive Rates</h4>
+                    <p>Enjoy attractive interest rates that are designed to suit your financial situation.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="feature-item">
+                    <div class="feature-icon">
+                        <i class="fas fa-user-shield"></i>
+                    </div>
+                    <h4>Trusted Service</h4>
+                    <p>We have built our reputation on trust and transparency with our valued customers.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="feature-item">
+                    <div class="feature-icon">
+                        <i class="fas fa-hands-helping"></i>
+                    </div>
+                    <h4>Expert Guidance</h4>
+                    <p>Our financial experts will guide you through the entire loan process with personalized advice.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="feature-item">
+                    <div class="feature-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <h4>Flexible Terms</h4>
+                    <p>Choose from flexible repayment options that best suit your financial capabilities.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Loan Types Tabs Section -->
+<section>
+    <div class="container">
+        <h2 class="section-title text-center">Explore Our Loan Options</h2>
+        
+        <ul class="nav nav-tabs loan-type-tabs justify-content-center mb-0" id="loanTabs" role="tablist">
+            <li class="nav-item" role="presentation">
+                <button class="nav-link active" id="personal-tab" data-bs-toggle="tab" data-bs-target="#personal" type="button" role="tab" aria-controls="personal" aria-selected="true">Personal Loan</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="business-tab" data-bs-toggle="tab" data-bs-target="#business" type="button" role="tab" aria-controls="business" aria-selected="false">Business Loan</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="home-tab" data-bs-toggle="tab" data-bs-target="#home-loan" type="button" role="tab" aria-controls="home-loan" aria-selected="false">Home Loan</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="mortgage-tab" data-bs-toggle="tab" data-bs-target="#mortgage" type="button" role="tab" aria-controls="mortgage" aria-selected="false">Mortgage Loan</button>
+            </li>
+        </ul>
+        
+        <div class="tab-content loan-type-content" id="loanTabsContent">
+            <div class="tab-pane fade show active" id="personal" role="tabpanel" aria-labelledby="personal-tab">
+                <div class="row align-items-center">
+                    <div class="col-md-6">
+                        <h3>Personal Loan</h3>
+                        <p>Our personal loans are designed to meet your immediate financial needs with minimal hassle.</p>
+                        <ul class="list-unstyled">
+                            <li class="mb-2"><i class="fas fa-check-circle text-primary me-2"></i> Loan amount up to ₹10 lakhs</li>
+                            <li class="mb-2"><i class="fas fa-check-circle text-primary me-2"></i> Competitive interest rates</li>
+                            <li class="mb-2"><i class="fas fa-check-circle text-primary me-2"></i> Flexible repayment options</li>
+                            <li class="mb-2"><i class="fas fa-check-circle text-primary me-2"></i> Minimal documentation required</li>
+                            <li class="mb-2"><i class="fas fa-check-circle text-primary me-2"></i> Quick approval within 24 hours</li>
+                        </ul>
+                        <a href="https://wa.me/916351094446?text=Hello,%20I'm%20interested%20in%20a%20Personal%20Loan.%20Please%20provide%20more%20information." class="btn btn-primary whatsapp-btn mt-3" target="_blank">
+                            <i class="fab fa-whatsapp me-2"></i>Apply Now
+                        </a>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="text-center float-element">
+                            <svg width="300" height="200" viewBox="0 0 600 400" xmlns="http://www.w3.org/2000/svg">
+                                <rect x="100" y="50" width="400" height="300" rx="20" fill="#f8f9fa" stroke="#0d6efd" stroke-width="2"/>
+                                <rect x="150" y="100" width="300" height="50" rx="10" fill="#e9ecef"/>
+                                <rect x="150" y="170" width="300" height="50" rx="10" fill="#e9ecef"/>
+                                <rect x="150" y="240" width="300" height="50" rx="10" fill="#0d6efd"/>
+                                <text x="300" y="275" font-family="Arial" font-size="20" fill="#ffffff" text-anchor="middle">APPLY NOW</text>
+                                <circle cx="130" cy="80" r="15" fill="#0d6efd"/>
+                                <path d="M130 75 L125 85 L135 85 Z" fill="#ffffff"/>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-pane fade" id="business" role="tabpanel" aria-labelledby="business-tab">
+                <div class="row align-items-center">
+                    <div class="col-md-6">
+                        <h3>Business Loan</h3>
+                        <p>Fuel your business growth with our customized business loan solutions.</p>
+                        <ul class="list-unstyled">
+                            <li class="mb-2"><i class="fas fa-check-circle text-primary me-2"></i> Loan amount up to ₹50 lakhs</li>
+                            <li class="mb-2"><i class="fas fa-check-circle text-primary me-2"></i> Attractive interest rates for businesses</li>
+                            <li class="mb-2"><i class="fas fa-check-circle text-primary me-2"></i> Flexible tenure options</li>
+                            <li class="mb-2"><i class="fas fa-check-circle text-primary me-2"></i> Minimal business documentation</li>
+                            <li class="mb-2"><i class="fas fa-check-circle text-primary me-2"></i> Quick processing for business needs</li>
+                        </ul>
+                        <a href="https://wa.me/916351094446?text=Hello,%20I'm%20interested%20in%20a%20Business%20Loan.%20Please%20provide%20more%20information." class="btn btn-primary whatsapp-btn mt-3" target="_blank">
+                            <i class="fab fa-whatsapp me-2"></i>Apply Now
+                        </a>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="text-center float-element">
+                            <svg width="300" height="200" viewBox="0 0 600 400" xmlns="http://www.w3.org/2000/svg">
+                                <rect x="100" y="100" width="400" height="200" rx="20" fill="#f8f9fa" stroke="#0d6efd" stroke-width="2"/>
+                                <rect x="150" y="150" width="300" height="100" rx="10" fill="#e9ecef"/>
+                                <line x1="150" y1="180" x2="450" y2="180" stroke="#0d6efd" stroke-width="2"/>
+                                <line x1="150" y1="220" x2="450" y2="220" stroke="#0d6efd" stroke-width="2"/>
+                                <circle cx="180" cy="130" r="15" fill="#0d6efd"/>
+                                <rect x="210" y="125" width="100" height="10" rx="5" fill="#0d6efd"/>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-pane fade" id="home-loan" role="tabpanel" aria-labelledby="home-tab">
+                <div class="row align-items-center">
+                    <div class="col-md-6">
+                        <h3>Home Loan</h3>
+                        <p>Make your dream home a reality with our affordable home loan options.</p>
+                        <ul class="list-unstyled">
+                            <li class="mb-2"><i class="fas fa-check-circle text-primary me-2"></i> High loan amount based on property value</li>
+                            <li class="mb-2"><i class="fas fa-check-circle text-primary me-2"></i> Lowest interest rates in the market</li>
+                            <li class="mb-2"><i class="fas fa-check-circle text-primary me-2"></i> Long repayment tenure up to 20 years</li>
+                            <li class="mb-2"><i class="fas fa-check-circle text-primary me-2"></i> Property evaluation assistance</li>
+                            <li class="mb-2"><i class="fas fa-check-circle text-primary me-2"></i> Dedicated relationship manager</li>
+                        </ul>
+                        <a href="https://wa.me/916351094446?text=Hello,%20I'm%20interested%20in%20a%20Home%20Loan.%20Please%20provide%20more%20information." class="btn btn-primary whatsapp-btn mt-3" target="_blank">
+                            <i class="fab fa-whatsapp me-2"></i>Apply Now
+                        </a>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="text-center float-element">
+                            <svg width="300" height="200" viewBox="0 0 600 400" xmlns="http://www.w3.org/2000/svg">
+                                <polygon points="300,50 500,200 100,200" fill="#f8f9fa" stroke="#0d6efd" stroke-width="2"/>
+                                <rect x="150" y="200" width="300" height="150" fill="#f8f9fa" stroke="#0d6efd" stroke-width="2"/>
+                                <rect x="250" y="250" width="100" height="100" fill="#e9ecef" stroke="#0d6efd" stroke-width="2"/>
+                                <line x1="250" y1="300" x2="350" y2="300" stroke="#0d6efd" stroke-width="2"/>
+                                <line x1="300" y1="250" x2="300" y2="350" stroke="#0d6efd" stroke-width="2"/>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-pane fade" id="mortgage" role="tabpanel" aria-labelledby="mortgage-tab">
+                <div class="row align-items-center">
+                    <div class="col-md-6">
+                        <h3>Mortgage Loan</h3>
+                        <p>Leverage your property assets with our mortgage loan services for your financial needs.</p>
+                        <ul class="list-unstyled">
+                            <li class="mb-2"><i class="fas fa-check-circle text-primary me-2"></i> Up to 70% of property value as loan</li>
+                            <li class="mb-2"><i class="fas fa-check-circle text-primary me-2"></i> Competitive interest rates</li>
+                            <li class="mb-2"><i class="fas fa-check-circle text-primary me-2"></i> Flexible repayment options</li>
+                            <li class="mb-2"><i class="fas fa-check-circle text-primary me-2"></i> Quick property evaluation</li>
+                            <li class="mb-2"><i class="fas fa-check-circle text-primary me-2"></i> Transparent processing</li>
+                        </ul>
+                        <a href="https://wa.me/916351094446?text=Hello,%20I'm%20interested%20in%20a%20Mortgage%20Loan.%20Please%20provide%20more%20information." class="btn btn-primary whatsapp-btn mt-3" target="_blank">
+                            <i class="fab fa-whatsapp me-2"></i>Apply Now
+                        </a>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="text-center float-element">
+                            <svg width="300" height="200" viewBox="0 0 600 400" xmlns="http://www.w3.org/2000/svg">
+                                <rect x="100" y="100" width="400" height="200" rx="20" fill="#f8f9fa" stroke="#0d6efd" stroke-width="2"/>
+                                <rect x="150" y="150" width="100" height="100" fill="#e9ecef" stroke="#0d6efd" stroke-width="2"/>
+                                <rect x="350" y="150" width="100" height="100" fill="#e9ecef" stroke="#0d6efd" stroke-width="2"/>
+                                <line x1="250" y1="200" x2="350" y2="200" stroke="#0d6efd" stroke-width="2" stroke-dasharray="5,5"/>
+                                <circle cx="300" cy="200" r="20" fill="#0d6efd"/>
+                                <text x="300" y="205" font-family="Arial" font-size="20" fill="#ffffff" text-anchor="middle">₹</text>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Loan Process Section -->
+<section class="bg-light" id="process">
+    <div class="container">
+        <h2 class="section-title text-center">Our Simple Loan Process</h2>
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="loan-process-step">
+                    <div class="step-number">1</div>
+                    <h4>Submit Required Documents</h4>
+                    <p>Provide your Aadhar card, PAN card, ATM card, and bank passbook to initiate the loan process.</p>
+                </div>
+                <div class="loan-process-step">
+                    <div class="step-number">2</div>
+                    <h4>Quick Verification</h4>
+                    <p>Our team will verify your documents and assess your loan eligibility within hours.</p>
+                </div>
+                <div class="loan-process-step">
+                    <div class="step-number">3</div>
+                    <h4>Loan Approval</h4>
+                    <p>Once verified, your loan will be approved with terms and conditions clearly explained.</p>
+                </div>
+                <div class="loan-process-step mb-0">
+                    <div class="step-number">4</div>
+                    <h4>Disbursement</h4>
+                    <p>Receive your loan amount directly in your bank account within 24 hours of approval.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Contact Section -->
+<section id="contact">
+    <div class="container">
+        <h2 class="section-title text-center">Contact Us</h2>
+        <div class="row g-4">
+            <div class="col-lg-6">
+                <div class="contact-info mb-4">
+                    <h3 class="mb-4">Get In Touch</h3>
+                    <div class="d-flex align-items-center mb-4">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone-alt"></i>
+                        </div>
+                        <div>
+                            <h5 class="mb-1">Phone Numbers</h5>
+                            <p class="mb-0">
+                                <a href="tel:+916351094446" class="phone-link">+91 6351094446</a>
+                            </p>
+                            <p class="mb-0">
+                                <a href="tel:+919723425376" class="phone-link">+91 9723425376</a>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="d-flex align-items-center mb-4">
+                        <div class="contact-icon">
+                            <i class="fab fa-whatsapp"></i>
+                        </div>
+                        <div>
+                            <h5 class="mb-1">WhatsApp</h5>
+                            <p class="mb-0">
+                                <a href="https://wa.me/916351094446" class="phone-link" target="_blank">+91 6351094446</a>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="d-flex align-items-center mb-4">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div>
+                            <h5 class="mb-1">Office Address</h5>
+                            <p class="mb-0">166, Silver stone arcade, કથિરીયા હનુમાન પાસે, સિગનપોર રોડ, સિગનપોર, કતારગામ- 395004</p>
+                        </div>
+                    </div>
+                    <div class="d-flex align-items-center">
+                        <div class="contact-icon">
+                            <i class="fas fa-file-alt"></i>
+                        </div>
+                        <div>
+                            <h5 class="mb-1">Required Documents</h5>
+                            <p class="mb-0">Aadhar card, PAN card, ATM card, and bank passbook (original)</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Service Area</h5>
+                        <p class="card-text mb-0">Our services are currently available only in Surat city.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="card h-100">
+                    <div class="card-body p-4">
+                        <h3 class="card-title mb-4">Send Us a Message</h3>
+                        <form id="contactForm">
+                            <div class="mb-3">
+                                <label for="name" class="form-label">Full Name</label>
+                                <input type="text" class="form-control" id="name" placeholder="Enter your name" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="phone" class="form-label">Phone Number</label>
+                                <input type="tel" class="form-control" id="phone" placeholder="Enter your phone number" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="loanType" class="form-label">Loan Type</label>
+                                <select class="form-select" id="loanType" required>
+                                    <option value="">Select loan type</option>
+                                    <option value="Personal Loan">Personal Loan</option>
+                                    <option value="Business Loan">Business Loan</option>
+                                    <option value="Home Loan">Home Loan</option>
+                                    <option value="Mortgage Loan">Mortgage Loan</option>
+                                    <option value="Card Limit Loan">Card Limit Loan</option>
+                                    <option value="Vehicle Loan">Vehicle Loan</option>
+                                </select>
+                            </div>
+                            <div class="mb-3">
+                                <label for="message" class="form-label">Message</label>
+                                <textarea class="form-control" id="message" rows="4" placeholder="Enter your message"></textarea>
+                            </div>
+                            <button type="submit" class="btn whatsapp-btn text-white w-100">
+                                <i class="fab fa-whatsapp me-2"></i>Submit via WhatsApp
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4 mb-4 mb-lg-0">
+                <h4 class="mb-3">KRISHNA CONSULTANCY</h4>
+                <p>Providing fast and reliable financial solutions with minimal documentation and attractive interest rates.</p>
+            </div>
+            <div class="col-lg-4 mb-4 mb-lg-0">
+                <h4 class="mb-3">Quick Links</h4>
+                <ul class="list-unstyled">
+                    <li class="mb-2"><a href="#home" class="text-white text-decoration-none">Home</a></li>
+                    <li class="mb-2"><a href="#services" class="text-white text-decoration-none">Services</a></li>
+                    <li class="mb-2"><a href="#features" class="text-white text-decoration-none">Why Choose Us</a></li>
+                    <li class="mb-2"><a href="#process" class="text-white text-decoration-none">Loan Process</a></li>
+                    <li class="mb-2"><a href="#contact" class="text-white text-decoration-none">Contact</a></li>
+                </ul>
+            </div>
+            <div class="col-lg-4">
+                <h4 class="mb-3">Contact Information</h4>
+                <p class="mb-2"><i class="fas fa-map-marker-alt me-2"></i> 166, Silver stone arcade, કથિરીયા હનુમાન પાસે, સિગનપોર રોડ, સિગનપોર, કતારગામ- 395004</p>
+                <p class="mb-2"><i class="fas fa-phone-alt me-2"></i> +91 6351094446, +91 9723425376</p>
+                <p class="mb-0"><i class="fab fa-whatsapp me-2"></i> <a href="https://wa.me/916351094446" class="text-white text-decoration-none" target="_blank">WhatsApp Us</a></p>
+            </div>
+        </div>
+        <hr class="my-3 bg-light">
+        <div class="text-center">
+            <p class="mb-0">&copy; 2023 Krishna Consultancy. All Rights Reserved.</p>
+        </div>
+    </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+    // Form submission handler for WhatsApp
+    document.getElementById('contactForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        // Get form values
+        const name = document.getElementById('name').value.trim();
+        const phone = document.getElementById('phone').value.trim();
+        const loanType = document.getElementById('loanType').value;
+        const message = document.getElementById('message').value.trim();
+        
+        // Validate form
+        if (!name || !phone || loanType === '') {
+            alert('Please fill all required fields');
+            return;
+        }
+        
+        // Create WhatsApp message
+        let whatsappMessage = `Hello, I'm ${name}. I'm interested in a ${loanType}. My contact number is ${phone}.`;
+        
+        if (message) {
+            whatsappMessage += ` Additional message: ${message}`;
+        }
+        
+        // Encode the message for URL
+        const encodedMessage = encodeURIComponent(whatsappMessage);
+        
+        // Open WhatsApp with the message
+        window.open(`https://wa.me/916351094446?text=${encodedMessage}`, '_blank');
+        
+        // Reset form
+        this.reset();
+    });
+    
+    // Smooth scrolling for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            const targetId = this.getAttribute('href');
+            const targetElement = document.querySelector(targetId);
+            
+            if (targetElement) {
+                window.scrollTo({
+                    top: targetElement.offsetTop - 70,
+                    behavior: 'smooth'
+                });
+                
+                // Close mobile menu if open
+                const navbarCollapse = document.querySelector('.navbar-collapse');
+                if (navbarCollapse.classList.contains('show')) {
+                    navbarCollapse.classList.remove('show');
+                }
+            }
+        });
+    });
+    
+    // Initialize carousel with auto-sliding
+    var myCarousel = document.querySelector('#heroCarousel');
+    var carousel = new bootstrap.Carousel(myCarousel, {
+        interval: 5000,
+        wrap: true
+    });
+</script>
+</body>
+</html>
